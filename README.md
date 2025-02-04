@@ -124,10 +124,10 @@ Each method generates the following visualizations:
 
 ### Example Plots
 
-![Time Series Plot](time_series_plot.png)  
+![Time Series Plot](./photo/time_series_plot.png)  
 *Time series data with anomalies highlighted in red.*
 
-![Anomaly Distribution](anomaly_distribution.png)  
+![Anomaly Distribution](./photo/anomaly_distribution.png)  
 *Distribution of normal vs. anomalous data points.*
 
 ---
