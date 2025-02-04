@@ -1,6 +1,6 @@
 ---
 
-# AnomalyDetector: Time Series Anomaly Detection 🕵️‍♂️
+# detecting-anomalies-in-AWS-CloudWatch-data 🕵️‍♂️
 
 AnomalyDetector is a Python-based project that detects anomalies in time series data using the **Isolation Forest** algorithm. It is designed to analyze time-stamped data, identify unusual patterns, and visualize the results. This project is ideal for monitoring and analyzing metrics such as server requests, cloudwatch data, or any time series dataset.
 
