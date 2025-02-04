@@ -43,8 +43,7 @@ The dataset used is the `elb_request_count_8c0756.csv` from the **Numenta Anomal
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/AnomalyDetection.git
-   cd AnomalyDetection
+   git clone https://github.com/sedwna/detecting-anomalies-in-AWS-CloudWatch-data.git
    ```
 
 2. Install dependencies:
