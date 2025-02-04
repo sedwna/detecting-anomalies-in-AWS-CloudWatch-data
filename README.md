@@ -1,28 +1,34 @@
----
+# Anomaly Detection in Time Series Data 🕵️‍♂️
 
-# detecting-anomalies-in-AWS-CloudWatch-data 🕵️‍♂️
+This repository contains three different approaches for detecting anomalies in time series data:
+1. **Density Estimation**: Uses multivariate Gaussian distribution to estimate the likelihood of data points.
+2. **Isolation Forest**: An unsupervised algorithm that isolates anomalies using random forests.
+3. **Local Outlier Factor (LOF)**: A density-based method that identifies outliers by comparing the local density of a point to its neighbors.
 
-AnomalyDetector is a Python-based project that detects anomalies in time series data using the **Isolation Forest** algorithm. It is designed to analyze time-stamped data, identify unusual patterns, and visualize the results. This project is ideal for monitoring and analyzing metrics such as server requests, cloudwatch data, or any time series dataset.
-
----
-
-## Features ✨
-
-- **Time Series Analysis**: Analyzes time-stamped data to detect anomalies.
-- **Isolation Forest Algorithm**: Uses the Isolation Forest algorithm for unsupervised anomaly detection.
-- **Visualization**: Provides clear visualizations of the time series data and detected anomalies.
-- **Customizable**: Easily adjust the window size and contamination parameter for different datasets.
+The dataset used is the `elb_request_count_8c0756.csv` from the **Numenta Anomaly Benchmark (NAB)**, which contains time-stamped request counts from an AWS Elastic Load Balancer.
 
 ---
 
 ## Table of Contents
 
-1. [Installation](#installation)
-2. [Usage](#usage)
-3. [Dataset](#dataset)
-4. [Methodology](#methodology)
-5. [Visualization](#visualization)
-6. [Contributing](#contributing)
+1. [Features](#features)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Dataset](#dataset)
+5. [Methods Overview](#methods-overview)
+6. [Visualization](#visualization)
+7. [Contributing](#contributing)
+
+---
+
+## Features ✨
+
+- **Three Anomaly Detection Methods**:
+  - **Density Estimation**: Based on multivariate Gaussian distribution.
+  - **Isolation Forest**: An efficient algorithm for detecting anomalies in high-dimensional data.
+  - **Local Outlier Factor (LOF)**: A density-based method for identifying local outliers.
+- **Visualization**: Clear visualizations of time series data and detected anomalies.
+- **Modular Code**: Each method is implemented in a separate Jupyter Notebook for easy understanding and extension.
 
 ---
 
@@ -37,7 +43,8 @@ AnomalyDetector is a Python-based project that detects anomalies in time series 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/sedwna/detecting-anomalies-in-AWS-CloudWatch-data.git
+   git clone https://github.com/your-username/AnomalyDetection.git
+   cd AnomalyDetection
    ```
 
 2. Install dependencies:
@@ -49,24 +56,19 @@ AnomalyDetector is a Python-based project that detects anomalies in time series 
 
 ## Usage 🚀
 
-### Running the Anomaly Detector
+### Running the Anomaly Detection Methods
 
-1. Place your dataset in the project directory (or use the provided dataset from Numenta Anomaly Benchmark).
-2. Update the dataset path in the script if necessary:
-   ```python
-   df = pd.read_csv("../data/elb_request_count_8c0756.csv")
-   ```
-3. Run the notebook:
-   ```bash
-   python Isolation_Forest.py
-   ```
+1. **Density Estimation**:
+   - Open the `density_estimation.ipynb` notebook.
+   - Run all cells to preprocess the data, estimate density, and detect anomalies.
 
-### Example Output
+2. **Isolation Forest**:
+   - Open the `Isolation_Forest.ipynb` notebook.
+   - Run all cells to preprocess the data, train the Isolation Forest model, and detect anomalies.
 
-The script will:
-1. Load and preprocess the time series data.
-2. Detect anomalies using the Isolation Forest algorithm.
-3. Generate visualizations of the time series data and detected anomalies.
+3. **Local Outlier Factor (LOF)**:
+   - Open the `local_outlier_factor.ipynb` notebook.
+   - Run all cells to preprocess the data, train the LOF model, and detect anomalies.
 
 ---
 
@@ -78,41 +80,54 @@ You can download the dataset from the [NAB GitHub repository](https://github.com
 
 ---
 
-## Methodology 🧠
+## Methods Overview 🧠
 
-### Steps
+### 1. Density Estimation
 
-1. **Data Preprocessing**:
-   - Convert the `timestamp` column to datetime format.
-   - Create lagged features for the time series data.
+- **Description**: Uses a multivariate Gaussian distribution to estimate the likelihood of data points. Points with low likelihood are flagged as anomalies.
+- **Steps**:
+  1. Preprocess the data and create lagged features.
+  2. Fit a multivariate Gaussian distribution to the data.
+  3. Calculate the log-likelihood of each data point.
+  4. Flag points with log-likelihood below a threshold as anomalies.
 
-2. **Anomaly Detection**:
-   - Use the **Isolation Forest** algorithm to detect anomalies.
-   - Adjust the `contamination` parameter to control the sensitivity of the detector.
+### 2. Isolation Forest
 
-3. **Visualization**:
-   - Plot the time series data.
-   - Highlight detected anomalies in red.
+- **Description**: An unsupervised algorithm that isolates anomalies by randomly selecting features and splitting data points.
+- **Steps**:
+  1. Preprocess the data and create lagged features.
+  2. Train an Isolation Forest model.
+  3. Predict anomalies using the trained model.
+  4. Visualize the results.
+
+### 3. Local Outlier Factor (LOF)
+
+- **Description**: A density-based method that compares the local density of a point to its neighbors. Points with significantly lower density are flagged as anomalies.
+- **Steps**:
+  1. Preprocess the data and create lagged features.
+  2. Train an LOF model.
+  3. Predict anomalies using the trained model.
+  4. Visualize the results.
 
 ---
 
 ## Visualization 📈
 
-The project generates the following visualizations:
+Each method generates the following visualizations:
 
 1. **Time Series Plot**:
    - A line plot of the time series data.
    - Anomalies are highlighted with red dots.
 
 2. **Anomaly Distribution**:
-   - A histogram showing the distribution of normal vs. anomalous data points.
+   - A histogram or scatter plot showing the distribution of normal vs. anomalous data points.
 
 ### Example Plots
 
-![Time Series Plot](./photo/time_series_plot.png)  
+![Time Series Plot](time_series_plot.png)  
 *Time series data with anomalies highlighted in red.*
 
-![Anomaly Distribution](./photo/anomaly_distribution.png)  
+![Anomaly Distribution](anomaly_distribution.png)  
 *Distribution of normal vs. anomalous data points.*
 
 ---
@@ -132,7 +147,7 @@ We welcome contributions to this project! If you'd like to contribute, please fo
 ## Acknowledgments 🙏
 
 - **Numenta**: For providing the Numenta Anomaly Benchmark (NAB) dataset.
-- **Scikit-learn**: For the Isolation Forest implementation.
+- **Scikit-learn**: For the Isolation Forest and Local Outlier Factor implementations.
 - **Seaborn and Matplotlib**: For data visualization.
 
 ---
@@ -140,8 +155,8 @@ We welcome contributions to this project! If you'd like to contribute, please fo
 ## Contact 📧
 
 For questions or feedback, feel free to reach out:
-- **Email**: [sajaddehqan2002@gmail.com]
-- **GitHub**: [[My GitHub Profile](https://github.com/sedwna)]
-
+- **Email**: sajaddehqan2002@gmail.com
+- **LinkedIn**: [[My LinkedIn Profile](https://www.linkedin.com/in/sajad-dehqan-189a0b258/)]
 
 ---
+
