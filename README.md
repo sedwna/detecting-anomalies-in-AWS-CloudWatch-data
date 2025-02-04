@@ -23,7 +23,6 @@ AnomalyDetector is a Python-based project that detects anomalies in time series 
 4. [Methodology](#methodology)
 5. [Visualization](#visualization)
 6. [Contributing](#contributing)
-7. [License](#license)
 
 ---
 
@@ -127,12 +126,6 @@ We welcome contributions to this project! If you'd like to contribute, please fo
 3. Commit your changes (`git commit -m 'Add some feature'`).
 4. Push your changes to your fork (`git push origin feature/YourFeatureName`).
 5. Open a Pull Request.
-
----
-
-## License 📜
-
-This project is licensed under the **MIT License**. See the [LICENSE](https://github.com/numenta/NAB/tree/master/data/realAWSCloudwatch) file for details.
 
 ---
 
